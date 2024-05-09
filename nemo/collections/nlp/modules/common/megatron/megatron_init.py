@@ -260,12 +260,14 @@ def fake_initialize_model_parallel(
     for ranks in rank_generator.get_ranks('dp'):
         if rank in ranks:
             data_parallel_group = list(ranks)
+            print("NeMo sample change 1")
             logging.info(f'Rank {rank} has data parallel group : {data_parallel_group}')
 
     for ranks_with_cp in rank_generator.get_ranks('dp-cp'):
         all_data_parallel_group_ranks_with_cp.append(ranks_with_cp)
         if rank in ranks_with_cp:
             data_parallel_group_with_cp = ranks_with_cp
+            print("NeMo sample change 2")
             logging.info(
                 f'Rank {rank} has combined group of data parallel and context parallel : {data_parallel_group_with_cp}'
             )
